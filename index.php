@@ -22,7 +22,7 @@ if (isset($_GET["id"])) {
     <link rel="icon" href="Lib/backgroud.jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js">
+<!--     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js">
     <link rel="stylesheet" href="jquery/jquery-3.3.1.js">
     <link rel="stylesheet" href="jquery/jquery-3.3.1.min.js">
 
@@ -40,17 +40,15 @@ if (isset($_GET["id"])) {
                     success:function (data) {
                         if (data == 1) {
                             $("#kiemtra").css("color", "red").html("Mã đã tồn tại");
-                            //$("#kiemtraphone").css("color", "red").html("Co roi");
                         }
                         else {
                             $("#kiemtra").css("color", "blue").html("Hợp lệ");
-                            //$("#kiemtraphone").css("color", "blue").html("chua co");
                         }
                     }
                 })
             })
         });
-    </script>
+    </script> -->
 </head>
 <body>
 <div class="container">
