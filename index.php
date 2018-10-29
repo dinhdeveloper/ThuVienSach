@@ -33,7 +33,7 @@ if (isset($_GET["id"])) {
                         if (data == 1) {
                             $("#kiemtra").css("color", "red").html("Mã đã tồn tại.");
                             // $.button("#submit").type = "hidden";
-                            $("#bookname").css("type", "hidden");
+                           // $("#bookname").css("type", "hidden");
 
                         }
                         else {
