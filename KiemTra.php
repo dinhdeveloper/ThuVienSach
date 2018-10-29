@@ -9,8 +9,8 @@ include ("Lib/DB.php");
 $un = ''; //định nghĩa un là id
 
 
-if (isset($_GET["un"])){
-    $un = $_GET["un"];
+if (isset($_POST["un"])){
+    $un = $_POST["un"];
 }
 $sql = "SELECT * FROM book WHERE id = '$un'";
 $result = Database::ExecuteQuery($sql);
