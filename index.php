@@ -33,7 +33,7 @@ if (isset($_GET["id"])) {
                         if (data == 1) {
                             $("#kiemtra").css("color", "red").html("Mã đã tồn tại.");
                             // $.button("#submit").type = "hidden";
-                           // $("#bookname").css("type", "hidden");
+                            $("#bookname").css("type", "hidden");
 
                         }
                         else {
@@ -47,7 +47,7 @@ if (isset($_GET["id"])) {
 </head>
 <body>
 <div class="container">
-    <h1 class="display-4" style="text-align: center; color: red">
+    <h1 class="display-4" style="text-align: center; color: red; margin-top: 30px">
         THƯ VIỆN SÁCH HỌC VIỆN
     </h1><br>
     <div class="row">
@@ -57,9 +57,10 @@ if (isset($_GET["id"])) {
             <table class="table">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">BOOK NAME</th>
-                    <th scope="col">XÓA</th>
+                    <th scope="col" style="color: #E3008C">Mã</th>
+                    <th scope="col" style="color: #E3008C">Tên Sách</th>
+                    <th scope="col" style="color: #E3008C">SL</th>
+                    <th scope="col" style="color: #E3008C">Xóa</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -71,7 +72,8 @@ if (isset($_GET["id"])) {
                     <tr>
                         <th scope="row"><?php echo $row['id'] ?></th>
                         <td><?php echo $row['bookname'] ?></td>
-                        <td><a href="CapNhat.php?id=<?php echo $row['id'] ?>"><img src="Lib/delete.png"></a></td>
+                        <td style="text-align: center"><?php echo $row['quantity'] ?></td>
+                        <td><a href="CapNhat.php?id=<?php echo $row['id'] ?>"><img src="Lib/deletee.png" style="width: 32px; height: 32px"></a></td>
                     </tr>
                     <?php
                 }
@@ -84,8 +86,9 @@ if (isset($_GET["id"])) {
             <table class="table">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">BOOK NAME</th>
+                    <th scope="col" style="color: #E3008C">Mã</th>
+                    <th scope="col" style="color: #E3008C">Tên Sách</th>
+                    <th scope="col" style="color: #E3008C">SL</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,6 +100,7 @@ if (isset($_GET["id"])) {
                     <tr>
                         <th scope="row"><?php echo $row['id'] ?></th>
                         <td><?php echo $row['bookname'] ?></td>
+                        <td style="text-align: center"><?php echo $row['quantity'] ?></td>
                     </tr>
                     <?php
                 }
@@ -108,15 +112,19 @@ if (isset($_GET["id"])) {
             <h4 style="color: blue"><u>THÊM SÁCH</u></h4><br>
             <form class="form-inline" method="post">
                 <div class="form-group mx-sm-3 mb-2">
-                    <label for="bookname" class="sr-only">ID</label>
+                    <label for="bookname" class="sr-only">Mã Sách</label>
                     <input type="text" class="form-control" id="id" placeholder="ID" name="id">
                 </div>
                 <div id="kiemtra"></div>
                 <br>
                 <br>
                 <div class="form-group mx-sm-3 mb-2">
-                    <label for="bookname" class="sr-only">Book Name</label>
+                    <label for="bookname" class="sr-only">Tên Sách</label>
                     <input type="text" class="form-control" id="bookname" placeholder="Tên Sách" name="bookname">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="bookname" class="sr-only">Số Lượng</label>
+                    <input type="hidden" class="form-control" id="soluong" placeholder="Số Lượng" name="soluong">
                 </div>
                 <button type="submit" id="submit" class="btn btn-primary mb-2" name="submit" style="margin-left:20px">
                     Gửi
@@ -126,11 +134,12 @@ if (isset($_GET["id"])) {
             if (isset($_REQUEST['submit'])) {
                 $id = $_POST['id'];
                 $bookname = $_POST['bookname'];
+                $soluong = $_POST['soluong'];
                 if ($id == "" || $bookname == "") {
                     echo '<script>alert("Vui lòng nhập đầy đủ trường thông tin")</script>';
                 } else {
-                    $sql = "INSERT INTO book(id,bookname)
-					            VALUES ('$id','$bookname')";
+                    $sql = "INSERT INTO book(id,bookname,quantity)
+					            VALUES ('$id','$bookname',1)";
                     $result = Database::ExecuteQuery($sql);
                     Database::ChangeURL("index.php");
                 }
