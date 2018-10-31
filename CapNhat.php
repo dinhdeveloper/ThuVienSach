@@ -8,7 +8,7 @@ $sql = "SELECT * FROM book WHERE id = '$id'";
 $result = Database::ExecuteQuery($sql);
 $row = mysqli_fetch_array($result);
 if ($id === $row['id']){
-    $sql = "UPDATE `book` SET `add`= 2 WHERE id = '$id'";
+    $sql = "DELETE FROM `book` WHERE id = '$id'";
     $result = Database::ExecuteQuery($sql);
     Database::ChangeURL("index.php");
 }
