@@ -8,8 +8,11 @@ $sql = "SELECT * FROM book WHERE id = '$id'";
 $result = Database::ExecuteQuery($sql);
 $row = mysqli_fetch_array($result);
     if ($id === $row['id']){
-        $sql = "UPDATE `book` SET `add`= 1 WHERE id = '$id'";
+        $soluong = $row['quantity'];
+        $soluong++;
+        $sql = "UPDATE `book` SET `add`= 1,`quantity` = '$soluong' WHERE id = '$id'";
         $result = Database::ExecuteQuery($sql);
-        echo 'Thêm thành công';
+        echo '<script>alert("Thêm Thành Công")</script>';
+        Database::ChangeURL("index.php");
     }
 ?>
